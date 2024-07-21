@@ -19,12 +19,13 @@ def get_data() -> list[dict]:
         authorName = author.text
         authorUrl = BASE_URL + author.parent['href']
         authorQuotes = get_all_author_quotes(authorUrl)
-        authorsList.append(Author(authorName, authorUrl, authorQuotes))
+        if len(authorQuotes) > 0:
+            authorsList.append(Author(authorName, authorUrl, authorQuotes))
 
-        if len(authorsList) % 20 == 0:
-            subject = "Scraping authors"
-            msg = f"Scraped {len(authorsList)} authors"
-            utils.notify(subject, msg)
+            if len(authorsList) % 20 == 0:
+                subject = "Scraping authors"
+                msg = f"Scraped {len(authorsList)} authors"
+                utils.notify(subject, msg)
 
     authors_data = [{'name': author.name,
                      'url': author.url,
