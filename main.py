@@ -15,7 +15,7 @@ def get_data() -> list[dict]:
     soup = utils.get_soup(authorsListUrl)
     authors = soup.find_all('span', class_='authorContentName')
 
-    for author in tqdm(authors[:1], desc="Extracting authors"):
+    for author in tqdm(authors, desc="Extracting authors"):
         authorName = author.text
         authorUrl = BASE_URL + author.parent['href']
         authorQuotes = get_all_author_quotes(authorUrl)

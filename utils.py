@@ -25,8 +25,6 @@ def get_soup(URL) -> BeautifulSoup:
 def notify(subjectMessage: str, bodyMessage: str) -> None:
     emailSender = config.EMAIL_SENDER
     emailPassword = config.EMAIL_PASSWORD
-    print(emailSender)
-    print(emailPassword)
     emailReceptor = emailSender
     emailSubject = subjectMessage
     emailBody = bodyMessage
